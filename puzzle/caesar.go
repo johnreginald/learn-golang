@@ -12,10 +12,10 @@ func main() {
 func encrypt(text string, salt uint8) string {
 	newText := []uint8{}
 
-	for x := 0; x < len(text); x++ {
-		result := text[x] + salt
+	for _, element := range text {
+		result := uint8(element) + salt
 
-		if unicode.IsLower(rune(text[x])) {
+		if unicode.IsLower(rune(element)) {
 			if result > 122 {
 				newText = append(newText, result-26)
 			} else {
@@ -23,7 +23,7 @@ func encrypt(text string, salt uint8) string {
 			}
 		}
 
-		if unicode.IsUpper(rune(text[x])) {
+		if unicode.IsUpper(rune(element)) {
 			if result > 90 {
 				newText = append(newText, result-26)
 			} else {
@@ -31,7 +31,7 @@ func encrypt(text string, salt uint8) string {
 			}
 		}
 
-		if text[x] == 32 {
+		if element == 32 {
 			newText = append(newText, 32)
 		}
 	}
