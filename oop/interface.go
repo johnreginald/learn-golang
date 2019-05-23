@@ -24,7 +24,7 @@ func (human *Human) talk() string {
 	return "Hello World in " + human.lang + " by " + human.name
 }
 
-func main() {
+func test() {
 	mm := Myanmar{Human{"Htet", 21, "Myanmar"}}
 
 	fmt.Println(mm.name)
